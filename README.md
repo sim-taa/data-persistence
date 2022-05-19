@@ -10,7 +10,7 @@ You are not allowed to collaborate during the sprint challenge.
 
 ## Project Set Up
 
-- [ ] Run `npm install` to install your dependencies.
+- [√] Run `npm install` to install your dependencies.
 - [ ] Run tests locally executing `npm test`.
 
 ## Project Instructions
@@ -35,7 +35,11 @@ The project needs some additional NPM dependencies in order to work.
 
 ### Required Scripts
 
-Add `"start"`. `"server"`, `"migrate"` and `"rollback"` scripts to the `package.json` file. The tests depend on these scripts being correct!
+Add 
+√`"start"`
+√`"server"`, 
+√`"migrate"` and 
+√`"rollback"` scripts to the `package.json` file. The tests depend on these scripts being correct!
 
 ### Required Tables
 
