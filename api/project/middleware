@@ -1,0 +1,12 @@
+const Projects = require("./model");
+
+/* the below relates to test 5 */
+function newProjectPayloadValidation(req, res, next) {
+  if (req.body.name) {
+    next();
+  } else {
+    res.status(400).json({
+      message: "please provide a name",
+    });
+  }
+}
