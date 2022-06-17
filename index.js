@@ -1,9 +1,6 @@
 // start your server here
-const express = require("express");
+const server = require("./api/server.js");
 
-const server = express();
-//require('./api/server.js');
-
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 19000;
 
 server.listen(port, () => console.log(`listening on ${port}`));
