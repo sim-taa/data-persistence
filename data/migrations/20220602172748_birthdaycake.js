@@ -2,6 +2,10 @@ const { resource } = require("../../api/server");
 
 exports.up = async function (knex) {
   await knex.schema
+    //.dropTableIfExists("projects")
+    //.dropTableIfExists("resources")
+    //.dropTableIfExists("tasks")
+    //.dropTableIfExists("project_resources")
     .createTable("projects", (projects) => {
       projects.increments("project_id");
       projects.string("project_name").notNullable();

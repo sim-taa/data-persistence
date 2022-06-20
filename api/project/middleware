@@ -10,3 +10,7 @@ function newProjectPayloadValidation(req, res, next) {
     });
   }
 }
+
+module.exports = {
+  newProjectPayloadValidation,
+};
