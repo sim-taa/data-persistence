@@ -3,6 +3,17 @@ const res = require("express/lib/response");
 const Project = require("./model.js");
 // build your `/api/projects` router here
 
+router.get("/", async (req, res, next) => {
+  const projects = await Project.get();
+  res.status(200).json(projects);
+});
+router.post("/", async (req, res, next) => {
+  //eslint-disable-line
+  const newProject = req.body;
+  const project = await Project.insert(newProject);
+  res.status(201).json(project);
+});
+
 router.use("*", (req, res) => {
   res.json({ api: "up" });
 });
@@ -13,12 +24,6 @@ router.use((err, req, res, next) => {
     message: err.message,
     stack: err.stack,
   });
-});
-router.post("/", async (req, res, next) => {
-  //eslint-disable-line
-  const newProject = req.body;
-  const project = await Project.insert(newProject);
-  res.status(201).json(project);
 });
 
 module.exports = router;

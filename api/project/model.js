@@ -7,10 +7,16 @@ module.exports = {
   insert,
 };
 
-function get(project_id) {}
+function get() {
+  return db("projects");
+}
 
 function insert(project) {
   return db("projects")
     .insert(project)
-    .then(([project_id]) => get(id));
+    .then(([project_id]) => db("projects").where({ project_id }))
+    .then(([project]) => ({
+      ...project,
+      project_completed: project.project_completed ? true : false,
+    }));
 }
