@@ -1,15 +1,17 @@
 const router = require("express").Router();
 const res = require("express/lib/response");
 const Project = require("./model.js");
+const { newProjectPayloadValidation } = require("./middleware");
 // build your `/api/projects` router here
 
 router.get("/", async (req, res, next) => {
   const projects = await Project.get();
   res.status(200).json(projects);
 });
-router.post("/", async (req, res, next) => {
+router.post("/", newProjectPayloadValidation, async (req, res, next) => {
   //eslint-disable-line
   const newProject = req.body;
+  console.log(req.body);
   const project = await Project.insert(newProject);
   res.status(201).json(project);
 });
