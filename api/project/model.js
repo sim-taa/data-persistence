@@ -8,9 +8,15 @@ module.exports = {
 };
 
 function get() {
-  return db("projects");
+  return db("projects").then((projects) =>
+    projects.map(function (project) {
+      return {
+        ...project,
+        project_completed: project.project_completed ? true : false,
+      };
+    })
+  );
 }
-
 function insert(project) {
   return db("projects")
     .insert(project)

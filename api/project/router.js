@@ -5,9 +5,20 @@ const { newProjectPayloadValidation } = require("./middleware");
 // build your `/api/projects` router here
 
 router.get("/", async (req, res, next) => {
-  const projects = await Project.get();
-  res.status(200).json(projects);
+  const projects = await Project.get()
+    .then((found) => {
+      res.json(found);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: "the projects information could not be retrieved",
+        err: err.message,
+        stack: err.stack,
+      });
+    });
+  //   res.status(200).json(projects);
 });
+
 router.post("/", newProjectPayloadValidation, async (req, res, next) => {
   //eslint-disable-line
   const newProject = req.body;
