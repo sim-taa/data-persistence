@@ -1,7 +1,10 @@
 const router = require("express").Router();
 const res = require("express/lib/response");
 const Resource = require("./model.js");
-const { newResourcePayloadValidation } = require("./middleware");
+const {
+  newResourcePayloadValidation,
+  rejectDuplicateName,
+} = require("./middleware");
 
 router.get("/", async (req, res, next) => {
   const resources = await Resource.get()
@@ -17,12 +20,21 @@ router.get("/", async (req, res, next) => {
     });
 });
 
-router.post("/", newResourcePayloadValidation, async (req, res, next) => {
-  //eslint-disable-line
-  const newResource = req.body;
-  const resource = await Resource.insert(newResource);
-  res.status(201).json(resource);
-});
+router.post(
+  "/",
+  newResourcePayloadValidation,
+  rejectDuplicateName,
+  async (req, res, next) => {
+    //eslint-disable-line
+    const newResource = req.body;
+    const resource = await Resource.insert(newResource).catch((err) => {
+      res.status(400).json({
+        message: "already exists",
+      });
+    });
+    res.status(201).json(resource);
+  }
+);
 
 router.use("*", (req, res) => {
   res.json({ api: "up" });

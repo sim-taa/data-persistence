@@ -12,12 +12,13 @@ function newResourcePayloadValidation(req, res, next) {
 }
 
 async function rejectDuplicateName(req, res, next) {
-    const name = req.body.resource_name
-    const resource = await Resource.get(name)
-    if (resource == !!) {
-        return res.status(400).json({message: "status 400"})
-    }
-    next();
+  const name = req.body.resource_name;
+  const resource = await Resource.get(name);
+  console.log(resource);
+  if (resource == true) {
+    return res.status(400).json({ message: "status 400" });
+  }
+  next();
 }
 module.exports = {
   newResourcePayloadValidation,
