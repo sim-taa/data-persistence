@@ -23,7 +23,7 @@ router.post("/", newTaskPayloadValidation, async (req, res, next) => {
   const newTask = req.body;
   const task = await Task.insert(newTask).catch((err) => {
     res.status(400).json({
-      message: "already exists",
+      message: "rejected from the task router",
     });
   });
   res.status(201).json(task);
