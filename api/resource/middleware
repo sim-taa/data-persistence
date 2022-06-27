@@ -1,0 +1,25 @@
+const Resource = require("./model");
+
+/* the below relates to test 9 */
+function newResourcePayloadValidation(req, res, next) {
+  if (req.body.resource_name) {
+    next();
+  } else {
+    res.status(400).json({
+      message: "status 400",
+    });
+  }
+}
+
+async function rejectDuplicateName(req, res, next) {
+    const name = req.body.resource_name
+    const resource = await Resource.get(name)
+    if (resource == !!) {
+        return res.status(400).json({message: "status 400"})
+    }
+    next();
+}
+module.exports = {
+  newResourcePayloadValidation,
+  rejectDuplicateName,
+};

@@ -2,7 +2,6 @@ const router = require("express").Router();
 const res = require("express/lib/response");
 const Project = require("./model.js");
 const { newProjectPayloadValidation } = require("./middleware");
-// build your `/api/projects` router here
 
 router.get("/", async (req, res, next) => {
   const projects = await Project.get()
@@ -16,7 +15,6 @@ router.get("/", async (req, res, next) => {
         stack: err.stack,
       });
     });
-  //   res.status(200).json(projects);
 });
 
 router.post("/", newProjectPayloadValidation, async (req, res, next) => {
