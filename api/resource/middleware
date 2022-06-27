@@ -1,6 +1,5 @@
 const Resource = require("./model");
 
-/* the below relates to test 9 */
 function newResourcePayloadValidation(req, res, next) {
   if (req.body.resource_name) {
     next();
