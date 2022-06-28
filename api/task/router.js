@@ -3,6 +3,7 @@ const router = require("express").Router();
 const res = require("express/lib/response");
 const Task = require("./model.js");
 const { newTaskPayloadValidation } = require("./middleware");
+const { checkProjectIdExists } = require("./middleware");
 
 router.get("/", async (req, res, next) => {
   const tasks = await Task.get()
@@ -18,16 +19,21 @@ router.get("/", async (req, res, next) => {
     });
 });
 
-router.post("/", newTaskPayloadValidation, async (req, res, next) => {
-  //eslint-disable-line
-  const newTask = req.body;
-  const task = await Task.insert(newTask).catch((err) => {
-    res.status(400).json({
-      message: "rejected from the task router",
-    });
-  });
-  res.status(201).json(task);
-});
+router.post(
+  "/",
+  newTaskPayloadValidation,
+  checkProjectIdExists,
+  async (req, res, next) => {
+    //eslint-disable-line
+    try {
+      const newTask = req.body;
+      const task = await Task.insert(newTask);
+      res.status(201).json(task);
+    } catch (error) {
+      res.status(500).json({ message: "failed to create a task" });
+    }
+  }
+);
 
 router.use("*", (req, res) => {
   res.json({ api: "up" });
