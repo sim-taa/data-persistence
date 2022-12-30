@@ -10,13 +10,11 @@ I was not permitted to collaborate with other students during this Sprint Challe
 
 Sprint Challenges must pass reviews before students can move on to new material. For more information on the review process [click here.](https://www.notion.so/bloomtech/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a)
 
-## Adding Data Persistence Sprint Challenge: Instructions Given to Students
-## Project Set Up
+## Instructions Given to Students
+### Project Set Up
 
 - [ ] Run `npm install` to install your dependencies.
 - [ ] Run tests locally executing `npm test`.
-
-## Project Instructions
 
 ### Introduction
 
