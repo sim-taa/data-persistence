@@ -1,12 +1,10 @@
 # Adding Data Persistence Sprint Challenge
 
+At BloomTech, teachers who are working web developers design Sprint Challenges to put students through realistic on-the-job scenarios, solving problems by applying the material covered in the curriculum. 
+
 In this Sprint Challenge, I practiced the concepts and techniques I learned during BloomTech's Data Persistence Unit, including database schema design, relational database management systems, multi-table queries, and data modeling.
 
 My project intends to demonstrate mastery of these skills by creating **a database based on given specifications**.
-
-## Context for Hiring Managers and Recruiters Reviewing this Repository
-
-At BloomTech, teachers who are working web developers design Sprint Challenges to put students through realistic on-the-job scenarios, solving problems by applying the material covered in the curriculum. 
 
 I was not permitted to collaborate with other students during this Sprint Challenge.
 
